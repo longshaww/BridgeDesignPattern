@@ -1,87 +1,18 @@
-﻿using System;
+﻿
+using BridgeDesignPattern.ConcreteImplementation;
+using BridgeDesignPattern.RefinedAbtraction;
+using System;
 
 namespace BridgeDesignPattern
 {
     class Program
     {
-        // Tạo interface color
-        interface Color
-        {
-            string GetColor();
-        }
-        //Tạo class màu đỏ implement Interface Color
-        class Red : Color
-        {
-            //Override phương thức của Interface Color
-            public string GetColor()
-            {
-                return "Red";
-            }
-        }
-        //Tạo class màu xanh dương implement Interface Color
-        class Blue : Color
-        {
-            //Override phương thức của Interface Color
-            public string GetColor()
-            {
-                return "Blue";
-            }
-        }
-       
-        // Tạo interface AreaShape
-        interface AreaShape{
-            double GetAreaShape(int param);
-        }
-
+        //Abstraction(Shape): định nghĩa giao diện của lớp trừu tượng,quản lý việc tham chiếu đến đối tượng hiện thực cụ thể(Implementation).
+        //Refined Abstraction(Circle, Square): kế thừa Abstraction.
+        //Implementation(Color): định nghĩa giao diện cho các lớp hiện thực.Thông thường nó là interface định ra các tác vụ nào đó của Abstraction.
+        //ConcreteImplementation(Red, Blue): kế thừa Implementation và định nghĩa chi tiết hàm thực thi.
         
-        // Tạo class Square Area implement Interface AreaShape
-        class SquareArea : AreaShape
-        {
-            //Override phương thức của Interface AreaShape
-            public double GetAreaShape(int edge)
-            {
-                return edge * edge;
-            }
 
-        }
-        // Tạo class Circle Area implement Interface AreaShape
-        class CircleArea : AreaShape
-        {
-            //Override phương thức của Interface AreaShape
-            public double GetAreaShape(int radius)
-            {
-                return (radius * radius) * 3.14;
-            }
-        }
-
-        //Tạo abstract class Shape
-        abstract class Shape
-        {   
-            //Define thuộc tính param cho Shape dùng để tính toán
-            public int param { get; set; }
-            //Define Interface GetArea
-            public AreaShape areaShape { get; set; }
-            //Override phương thức của Interface AreaShape
-            public double GetArea()
-            {
-                return areaShape.GetAreaShape(param);
-            }
-            //Define Interface Color
-            public Color color { get; set; }
-            //Override phương thức của Interface Color
-            public string GetColor()
-            {
-                return color.GetColor();
-            }
-        }
-
-        class Square : Shape 
-        {
-        }
-
-        class Circle : Shape
-        {        
-        }
         static void Main(string[] args)
         {
             Console.WriteLine("Tao doi tuong");
